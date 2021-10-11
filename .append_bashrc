@@ -1,0 +1,11 @@
+# git shortcuts
+alias gs="git status"
+alias gb="git branch"
+# tree-like commands as per other linux distros
+alias dirtree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
+alias tree="find . -not -path '*/\.*' -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+# uncomment if vim is installed
+# alias vi=vim
+# don't write __pycache__
+# export PYTHONDONTWRITEBYTECODE=1
+

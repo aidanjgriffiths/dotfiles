@@ -1,0 +1,13 @@
+[user]
+        name = agriffit
+        email = aidan.griffiths@bom.gov.au
+[core]
+        editor = vim
+[sequence]
+        editor = vim
+[color]
+        branch = auto
+        diff = auto
+        interactive = auto
+        status = auto
+        grep = auto
