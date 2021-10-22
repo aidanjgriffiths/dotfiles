@@ -54,7 +54,7 @@ if !exists("g:black_quiet")
   let g:black_quiet = 0
 endif
 if !exists("g:black_target_version")
-  let g:black_target_version = ""
+  let g:black_target_version = "20.8b1"
 endif
 
 function BlackComplete(ArgLead, CmdLine, CursorPos)
