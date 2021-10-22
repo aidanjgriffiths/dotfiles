@@ -1,5 +1,9 @@
+"see .vim/plugins for Black configuration
 " display all matching files with tab
 set wildmenu
+
+" show name of opened file
+set laststatus=2
 
 " easy buffer toggling with `F5`
 nnoremap <F5> :buffers<CR>:buffer<Space>
@@ -28,8 +32,7 @@ set noswapfile
 set ruler
 " current colorsheme
 colorscheme seoul256
-" set background, not sure if its working for seoul256.vim
-let g:seoul256_background = 236
+
 let g:NetrwIsOpen=0
 
 " highlight whitespace in dark green
@@ -42,10 +45,6 @@ match ExtraWhitespace /\s\+$/
 " folding toggling with spacebar mapping
 nnoremap <space> za
 vnoremap <space> zf
-
-" wip pylint settings
-" autocmd FileType python setlocal makeprg=pylint\ --reports=n\ --output-format=parseable
-" autocmd BufWritePost *.py silent make! <afile> | silent redraw!
 
 " setting netrw settings to act like NERDtree
 let g:netrw_banner = 0 " only works for the latestv im

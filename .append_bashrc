@@ -2,10 +2,36 @@
 alias gs="git status"
 alias gb="git branch"
 # tree-like commands as per other linux distros
-alias dirtree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
-alias tree="find . -not -path '*/\.*' -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+
+dirtree() {
+  max_depth=5
+  int_regex='^[0-9]+$'
+  if [[ ! -z $1 && $1 =~ $int_regex ]]
+  then
+    find . -maxdepth $1 -type d -not -path '*/\.*' -type d -print | grep -v ':*.git' | sed -e 's;[^/]*/;|---;g;s;---|; |;g' | less
+  else
+    echo "Default directory depth of $max_depth is used!"
+    echo "Add an integer parameter to dirtree to set new depth."
+    # grep -v command is to exclude any git objects as its not very user friendly in most cases
+    find . -maxdepth ${max_depth} -type d -not -path '*/\.*' -type d -print | grep -v ':*.git' | sed -e 's;[^/]*/;|---;g;s;---|; |;g' | less
+  fi
+}
+
+tree() {
+  max_depth=5
+  int_regex='^[0-9]+$'
+  if [[ ! -z $1 && $1 =~ $int_regex ]]
+  then
+    find . -maxdepth $1 -not -path '*/\.*' -print | grep -v ':*.git' | sed -e 's;[^/]*/;|---;g;s;---|; |;g' | less
+  else
+    echo "Default directory depth of $max_depth is used!"
+    echo "Add an integer parameter to tree to set new depth."
+    # grep -v command is to exclude any git objects as its not very user friendly in most cases
+    find . -maxdepth ${max_depth} -not -path '*/\.*' -print | grep -v ':*.git' | sed -e 's;[^/]*/;|---;g;s;---|; |;g' | less
+  fi
+}
+
 # uncomment if vim is installed
 # alias vi=vim
 # don't write __pycache__
 # export PYTHONDONTWRITEBYTECODE=1
-
