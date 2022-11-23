@@ -1,6 +1,31 @@
 # git shortcuts
 alias gs="git status"
 alias gb="git branch"
+alias gd="git diff"
+alias vi=vim
+# get number of commits since branching off main
+alias gr="git rev-list --count HEAD ^main"
+# pretty print commits since last main node
+alias gp="git rev-list --pretty='format:%C(auto)%h | %ad | %s' --date=short HEAD ^main | awk 'NR%2==0'"
+
+# COLOURS!
+black='\033[0;30m'
+dark_grey='\033[1;30m'
+red='\033[;31m'
+light_red='\033[1;31m'
+green='\033[0;32m'
+light_green='\033[1;32m'
+dark_orange='\033[0;33m'
+yellow='\033[1;33m'
+blue='\033[0;34m'
+light_blue='\033[1;34m'
+purple='\033[0;35m'
+light_purple='\033[1;35m'
+cyan='\033[0;36m'
+light_cyan='\033[1;36m'
+light_grey='\033[0;37m'
+white='\033[1;37m'
+no_colour='\033[0m'
 # tree-like commands as per other linux distros
 
 dirtree() {
