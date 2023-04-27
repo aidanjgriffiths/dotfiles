@@ -11,3 +11,4 @@
         interactive = auto
         status = auto
         grep = auto
+	ui = auto

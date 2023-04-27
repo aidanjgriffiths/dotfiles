@@ -1,4 +1,15 @@
-"see .vim/plugins for Black configuration
+call plug#begin('~/vim_plugins/vim-plug')
+" Plugins
+" Plug '~/vim_plugins/black', {'for': 'python'}
+Plug '~/vim_plugins/vim-surround'
+Plug '~/vim_plugins/ale', {'for': 'python'}
+
+call plug#end()
+
+let g:ale_linters={'python': ['pylint', 'bandit']}
+let g:ale_fixers={'python': ['black', 'isort']}
+let g:ale_fix_on_save = 1
+
 " display all matching files with tab
 set wildmenu
 
@@ -7,6 +18,7 @@ set laststatus=2
 
 " easy buffer toggling with `F5`
 nnoremap <F5> :buffers<CR>:buffer<Space>
+nnoremap <F1> :%s/\s\+$//e
 
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 smarttab expandtab autoindent
 set hidden " hides non saved file in vim buffer, look into switching between buffers
@@ -129,4 +141,47 @@ set relativenumber number
 " set folding for indended code for funcs and classes
 set foldmethod=indent
 set foldnestmax=1
+
+" Ctrl+\ - Open the definition in a new tab
+" Alt+] - Open the definition in a vertical split
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+let s:term_pos = {} " { bufnr: [winheight, n visible lines] }
+
+function! EnterTerminalNormalMode()
+    if &buftype != 'terminal' || mode('') != 't'
+        return 0
+    endif
+    call feedkeys("\<LeftMouse>\<c-w>N", "x")
+    let s:term_pos[bufnr()] = [winheight(winnr()), line('$') - line('w0')]
+    call feedkeys("\<ScrollWheelUp>")
+endfunction
+
+function! ExitTerminalNormalModeIfBottom()
+    if &buftype != 'terminal' || !(mode('') == 'n' || mode('') == 'v')
+        return 0
+    endif
+    let term_pos = s:term_pos[bufnr()]
+    let vis_lines = line('$') - line('w0')
+    let vis_empty = winheight(winnr()) - vis_lines
+    " if size has only expanded, match visible lines on entry
+    if term_pos[1] <= winheight(winnr())
+        let req_vis = min([winheight(winnr()), term_pos[1]])
+        if vis_lines <= req_vis | call feedkeys("i", "x") | endif
+    " if size has shrunk, match visible empty lines on entry
+    else
+        let req_vis_empty = term_pos[0] - term_pos[1]
+        let req_vis_empty = min([winheight(winnr()), req_vis_empty])
+        if vis_empty >= req_vis_empty | call feedkeys("i", "x") | endif
+    endif
+endfunction
+
+" scrolling up enters normal mode in terminal window, scrolling back to
+" the cursor's location upon entry resumes terminal mode. only limitation
+" is that terminal window must have focus before you can scroll to
+" enter normal mode
+tnoremap <silent> <ScrollWheelUp> <c-w>:call EnterTerminalNormalMode()<CR>
+nnoremap <silent> <ScrollWheelDown> <ScrollWheelDown>:call ExitTerminalNormalModeIfBottom()
+
 "~/.vimrc ends here
