@@ -2,9 +2,9 @@
         name = agriffit
         email = aidan.griffiths@bom.gov.au
 [core]
-        editor = vim
+        editor = nvim
 [sequence]
-        editor = vim
+        editor = nvim
 [color]
         branch = auto
         diff = auto
