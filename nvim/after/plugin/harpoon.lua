@@ -5,7 +5,14 @@ vim.keymap.set("n", "<leader>a", mark.add_file)
 vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
 
 -- these keymapping don't really seem very intuitive
-vim.keymap.set("n", "<C-h>", function() ui.nav_file(1) end)
-vim.keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
-vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
+-- needs to be remapped as it messes with the vim tmux bindings
+-- vim.keymap.set("n", "<C-h>", function() ui.nav_file(1) end)
+vim.keymap.set("n", "<C-t>", function()
+	ui.nav_file(2)
+end)
+vim.keymap.set("n", "<C-n>", function()
+	ui.nav_file(3)
+end)
+vim.keymap.set("n", "<C-s>", function()
+	ui.nav_file(4)
+end)

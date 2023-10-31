@@ -17,9 +17,7 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
-
+vim.opt.hlsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
@@ -30,3 +28,7 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 vim.opt.foldmethod = "indent"
+
+vim.cmd([[highlight ExtraWhitespace ctermbg=22]])
+vim.cmd([[match ExtraWhitespace /\s\+$/]])
+vim.cmd([[g:airline_theme base16_classic_dark]])
