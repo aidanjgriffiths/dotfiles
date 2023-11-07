@@ -1,4 +1,4 @@
-# Lines configured by zsh-newuser-install
+# sLines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -6,8 +6,9 @@ SAVEHIST=1000
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/agriffit/.zshrc'
 
+# TODO: Add Oh_My_Zsh config
 autoload -Uz compinit
-fpath+=/home/agriffit/.zsh/conda-zsh-completion
+fpath+=~/.zsh/conda-zsh-completion
 compinit
 # End of lines added by compinstall
 

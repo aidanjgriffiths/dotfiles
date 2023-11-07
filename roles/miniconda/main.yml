@@ -1,0 +1,29 @@
+---
+
+- name: Check if Miniconda3 install exists
+  stat:
+    path: ~/miniconda3
+  register: result
+
+- name: Make sure miniconda dir exists
+  ansible.builtin.file:
+    path: ~/miniconda3
+    state: directory
+    mode: '0755'
+  when: not result.stat.exists
+
+- name: Get Miniconda3 latest
+  ansible.builtin.get_url:
+    url: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    dest: ~/miniconda3/miniconda.sh
+  when: not result.stat.exists
+
+- name: Install Miniconda4 latest
+  shell: "bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3"
+  when: not result.stat.exists
+
+- name: Delete install script
+  ansible.builtin.file:
+    path: ~/miniconda3/miniconda.sh
+    state: absent
+  when: not result.stat.exists
