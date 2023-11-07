@@ -1,0 +1,26 @@
+---
+
+- name: Playbook to manage aidanjgriffiths dotfiles
+  hosts: localhost
+  connection: local
+  roles:
+    - role: nvim
+      tags:
+        - nvim
+    - role: zsh
+      tags:
+        - zsh
+    - role: tmux
+      tags:
+        - tmux
+    - role: miniconda
+      tags:
+        - miniconda
+
+  tasks:
+    - name: Create a symbolic to .gitconfig
+      ansible.builtin.file:
+        src: "{{ playbook_dir }}/.gitconfig"
+        dest: "{{ ansible_env.HOME }}/.gitconfig"
+        state: link
+        force: yes  # need to force in case .gitconfig already exists

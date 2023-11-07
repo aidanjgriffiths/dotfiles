@@ -1,0 +1,15 @@
+---
+- name: Install tmux with Homebrew in macOS
+  include_tasks: macos.yml
+  when: ansible_distribution == "MacOSX"
+
+- name: Install  with dnf in Fedora
+  include_tasks: fedora.yml
+  when: ansible_distribution == "Fedora"
+
+- name: Create a symbolic to tmux.conf
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/.tmux.conf"
+    dest: "{{ ansible_env.HOME }}/.tmux.conf"
+    state: link
+    force: yes  # need to force in case .tmux.conf already exists

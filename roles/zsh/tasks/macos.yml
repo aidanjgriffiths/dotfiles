@@ -1,0 +1,8 @@
+---
+
+- name: Install zsh deps for MacOS
+  community.general.homebrew:
+    name: 
+      - zsh
+      - stow
+    state: present

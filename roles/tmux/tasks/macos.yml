@@ -1,0 +1,8 @@
+---
+
+- name: Install tmux deps for MacOS
+  community.general.homebrew:
+    name: 
+      - tmux
+    state: present
+

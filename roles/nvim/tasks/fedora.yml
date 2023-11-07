@@ -1,0 +1,13 @@
+---
+
+- name: Install nvim deps for Fedora
+  become: yes
+  ansible.builtin.dnf:
+    name:
+      - neovim
+      - npm # necessary for Mason.nvim
+      - gcc
+      - fzf
+      - curl
+      - stow # ensure directories get correctly symlink'd
+    state: present

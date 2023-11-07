@@ -1,0 +1,27 @@
+---
+# install nvim and deps
+
+- name: Install nvim with Homebrew in macOS
+  include_tasks: macos.yml
+  when: ansible_distribution == "MacOSX"
+
+- name: Install  with dnf in Fedora
+  include_tasks: fedora.yml
+  when: ansible_distribution == "Fedora"
+
+- name: make sure ~/.config/nvim exists
+  ansible.builtin.file:
+    path: ~/.config/nvim
+    state: directory
+    mode: '0755'
+
+- name: Stow nvim files
+  shell: "stow nvim --target {{ ansible_env.HOME }}/.config/nvim"
+  register: result
+  changed_when: 'result.stderr is search("LINK: ")'
+
+- name: Install packer.nvim to enable plugins
+  ansible.builtin.git:
+    repo: https://github.com/wbthomason/packer.nvim
+    dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    single_branch: yes

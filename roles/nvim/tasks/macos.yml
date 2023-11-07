@@ -1,0 +1,12 @@
+---
+
+- name: Install nvim deps for MacOS
+  community.general.homebrew:
+    name: 
+      - neovim
+      - npm # necessary for Mason.nvim
+      - gcc
+      - fzf
+      - curl
+      - stow
+    state: present
