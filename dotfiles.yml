@@ -7,15 +7,15 @@
     - role: nvim
       tags:
         - nvim
-    - role: zsh
-      tags:
-        - zsh
     - role: tmux
       tags:
         - tmux
     - role: miniconda
       tags:
         - miniconda
+    - role: zsh
+      tags:
+        - zsh
 
   tasks:
     - name: Create a symbolic to .gitconfig
