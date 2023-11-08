@@ -10,4 +10,5 @@
       - fzf
       - curl
       - stow # ensure directories get correctly symlink'd
+      - ripgrep
     state: present
