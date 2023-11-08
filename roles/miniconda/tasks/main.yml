@@ -18,7 +18,7 @@
     dest: ~/miniconda3/miniconda.sh
   when: not result.stat.exists
 
-- name: Install Miniconda4 latest
+- name: Install Miniconda3 latest
   shell: "bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3"
   when: not result.stat.exists
 

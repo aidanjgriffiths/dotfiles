@@ -22,7 +22,10 @@ return require("packer").startup(function(use)
 	use("ThePrimeagen/harpoon")
 	use("mbbill/undotree")
 	use("tpope/vim-fugitive")
-	-- enable formatting with Mason plugins
+	use("tpope/vim-surround")
+	use("tpope/vim-commentary")
+	-- enable formatting with Mason plugins or local environment
+	-- the latter works best with current projects (01/11/23)
 	use("mhartington/formatter.nvim")
 	-- enable linting with Mason plugins
 	use("mfussenegger/nvim-lint")
@@ -53,4 +56,5 @@ return require("packer").startup(function(use)
 	use("ThePrimeagen/git-worktree.nvim")
 	use("vim-airline/vim-airline")
 	use("vim-airline/vim-airline-themes")
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 end)
