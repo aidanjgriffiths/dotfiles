@@ -5,18 +5,17 @@
     path: ~/miniconda3
   register: result
 
-- name: Make sure miniconda dir exists
-  ansible.builtin.file:
-    path: ~/miniconda3
-    state: directory
-    mode: '0755'
-  when: not result.stat.exists
-
 - name: Get Miniconda3 latest
   ansible.builtin.get_url:
-    url: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    url: https://repo.anaconda.com/miniconda/Miniconda3-latest-$(uname)-$(uname -m).sh
     dest: ~/miniconda3/miniconda.sh
-  when: not result.stat.exists
+  when: not result.stat.exists and ansible_distribution != "MacOSX"
+
+- name: Get Miniforge latest (MacOSX ARM version)
+  ansible.builtin.get_url:
+    url: https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh
+    dest: ~/miniconda3/miniconda.sh
+  when: not result.stat.exists and ansible_distribution == "MacOSX"
 
 - name: Install Miniconda3 latest
   shell: "bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3"
