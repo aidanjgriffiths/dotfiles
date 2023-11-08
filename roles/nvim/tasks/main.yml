@@ -25,3 +25,6 @@
     repo: https://github.com/wbthomason/packer.nvim
     dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
     single_branch: yes
+
+- name: Install/Update Packer plugins in headless mode
+  shell: "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"

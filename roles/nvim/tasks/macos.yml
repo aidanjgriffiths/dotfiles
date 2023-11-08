@@ -9,4 +9,5 @@
       - fzf
       - curl
       - stow
+      - ripgrep
     state: present
