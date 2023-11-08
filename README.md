@@ -9,7 +9,7 @@ configs to the current users home directory on `localhost`. This playbook will f
 if there are any local configuration files on target then they will be overriden. The playbook
 also requires sudo permissions to install required core dependencies from the targets package managers for each task.
 You may see duplicated dependencies across different tasks, this is done deliberately to ensure each
-role works independently to avoid any potential dependency coupling.
+role works independently.
 
 ```
 ansible-playbook dotfiles.yml --ask-become-pass
@@ -22,15 +22,14 @@ targets in the future. See `tree` output below:
 ```bash
 roles
 ├── miniconda
-│   └── main.yml
+│   └── tasks
+│       └── main.yml
 ├── nvim
 │   └── tasks
 │       ├── fedora.yml
 │       ├── macos.yml
 │       └── main.yml
 ├── tmux
-│   ├── files
-│   │   └── main.yml
 │   └── tasks
 │       ├── fedora.yml
 │       ├── macos.yml
