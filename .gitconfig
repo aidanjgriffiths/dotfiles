@@ -1,6 +1,9 @@
-[user]
-        name = agriffit
-        email = aidan.griffiths@bom.gov.au
+[includeIf "gitdir:~/github/"]
+    path = ~/github/.gitconfig
+[includeIf "gitdir:~/dotfiles/"]
+      path = ~/github/.gitconfig
+[includeIf "gitdir:~/dev/"]
+    path = ~/dev/.gitconfig
 [core]
         editor = nvim
 [sequence]
@@ -11,4 +14,4 @@
         interactive = auto
         status = auto
         grep = auto
-	ui = auto
+        ui = auto
