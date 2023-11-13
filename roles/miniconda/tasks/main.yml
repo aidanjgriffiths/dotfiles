@@ -26,3 +26,5 @@
     path: ~/miniconda3/miniconda.sh
     state: absent
   when: not result.stat.exists
+
+# zsh role handles the conda init step

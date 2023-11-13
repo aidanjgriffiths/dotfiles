@@ -18,12 +18,12 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
-	use("nvim-lua/plenary.nvim")
 	use("ThePrimeagen/harpoon")
+	use("ThePrimeagen/git-worktree.nvim")
 	use("mbbill/undotree")
 	use("tpope/vim-fugitive")
 	use("tpope/vim-surround")
-	use("tpope/vim-commentary")
+	use("tpope/vim-commentary") -- comments using `gc[c]`
 	-- enable formatting with Mason plugins or local environment
 	-- the latter works best with current projects (01/11/23)
 	use("mhartington/formatter.nvim")
@@ -53,8 +53,9 @@ return require("packer").startup(function(use)
 		end,
 	})
 	-- need to configure
-	use("ThePrimeagen/git-worktree.nvim")
 	use("vim-airline/vim-airline")
 	use("vim-airline/vim-airline-themes")
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
+	use("ThePrimeagen/git-worktree.nvim")
+	use({ "danielpieper/telescope-tmuxinator.nvim", requires = { "nvim-telescope/telescope.nvim" } })
 end)

@@ -13,3 +13,9 @@
     dest: "{{ ansible_env.HOME }}/.tmux.conf"
     state: link
     force: yes  # need to force in case .tmux.conf already exists
+
+- name: Install tmuxinator
+  community.general.gem:
+    name: tmuxinator
+    version: 3.0.5
+    state: present

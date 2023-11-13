@@ -10,6 +10,7 @@ plugins=(
   bundler
   dotenv
   macos
+  tmuxinator
   conda-zsh-completion
   zsh-autosuggestions
   zsh-syntax-highlighting
