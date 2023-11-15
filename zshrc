@@ -30,5 +30,8 @@ alias gr="git rev-list --count HEAD ^main"
 # pretty print commits since last main node
 alias gp="git rev-list --pretty='format:%C(auto)%h | %ad | %s' --date=short HEAD ^main | awk 'NR%2==0'"
 alias cl="conda env list"
+alias tm=tmuxinator
+
+export TERM=xterm-256color
 
 source $ZSH/oh-my-zsh.sh
