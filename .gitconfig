@@ -1,7 +1,7 @@
 [includeIf "gitdir:~/github/"]
     path = ~/github/.gitconfig
-[includeIf "gitdir:~/dotfiles/"]
-      path = ~/github/.gitconfig
+[includeIf "gitdir:~/dotfiles.git/"]
+    path = ~/github/.gitconfig
 [includeIf "gitdir:~/dev/"]
     path = ~/dev/.gitconfig
 [core]
