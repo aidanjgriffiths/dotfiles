@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+--vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- Moves highlighted text around with J and K
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -63,3 +64,8 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
 	pattern = { "*.nc" },
 	command = [[:! ncdump -h %]],
 })
+
+vim.keymap.set("n", "<leader>+", "5<C-w>+")
+vim.keymap.set("n", "<leader>-", "5<C-w>-")
+vim.keymap.set("n", "<leader>>", "5<C-w>>")
+vim.keymap.set("n", "<leader><", "5<C-w><")

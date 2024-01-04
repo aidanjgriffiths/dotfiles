@@ -15,6 +15,7 @@ require("nvim-treesitter.configs").setup({
 		"yaml",
 		"css",
 		"html",
+		"org",
 	},
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)

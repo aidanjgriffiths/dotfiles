@@ -64,11 +64,17 @@ return require("packer").startup(function(use)
 			return require("tmux").setup()
 		end,
 	})
+	use({ "danielpieper/telescope-tmuxinator.nvim", requires = { "nvim-telescope/telescope.nvim" } })
 	-- need to configure
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "nvim-tree/nvim-web-devicons", opt = true },
 	})
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
-	use({ "danielpieper/telescope-tmuxinator.nvim", requires = { "nvim-telescope/telescope.nvim" } })
+	use({
+		"stevearc/oil.nvim",
+		config = function()
+			require("oil").setup()
+		end,
+	})
 end)
