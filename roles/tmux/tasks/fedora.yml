@@ -5,4 +5,5 @@
   ansible.builtin.dnf:
     name:
       - tmux
+      - gem # for tmuxinator
     state: present

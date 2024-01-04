@@ -16,11 +16,3 @@
     - role: zsh
       tags:
         - zsh
-
-  tasks:
-    - name: Create a symbolic to .gitconfig
-      ansible.builtin.file:
-        src: "{{ playbook_dir }}/.gitconfig"
-        dest: "{{ ansible_env.HOME }}/.gitconfig"
-        state: link
-        force: yes  # need to force in case .gitconfig already exists

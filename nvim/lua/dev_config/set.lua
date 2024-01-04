@@ -31,4 +31,3 @@ vim.opt.foldmethod = "indent"
 
 vim.cmd([[highlight ExtraWhitespace ctermbg=22]])
 vim.cmd([[match ExtraWhitespace /\s\+$/]])
-vim.cmd([[g:airline_theme base16_classic_dark]])

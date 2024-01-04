@@ -52,3 +52,22 @@
   shell: "conda init zsh"
   register: result
   changed_when: 'result.stderr is search("modified")'
+
+# just chucking in some git homedir wrangling since its not worth adding a new role
+- name: Create a symbolic to .gitconfig
+  ansible.builtin.template:
+    src: "gitconfig.j2"
+    dest: "~/.gitconfig"
+    force: yes  # need to force in case .gitconfig already exists
+
+- name: Ensure scripts path exists
+  ansible.builtin.file:
+    path: "{{ script_dest_dir }}"
+    state: directory
+
+- name: Copy over git alias scripts to expected path
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ script_dest_dir }}/{{ item | basename }}"
+    mode: 0755
+  with_fileglob: "{{ playbook_dir }}/scripts/*.sh"

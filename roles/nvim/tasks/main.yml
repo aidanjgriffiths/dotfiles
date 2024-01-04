@@ -9,7 +9,7 @@
   include_tasks: fedora.yml
   when: ansible_distribution == "Fedora"
 
-- name: make sure ~/.config/nvim exists
+- name: Ensure ~/.config/nvim exists
   ansible.builtin.file:
     path: ~/.config/nvim
     state: directory

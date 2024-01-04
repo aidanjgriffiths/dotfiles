@@ -13,3 +13,21 @@
     dest: "{{ ansible_env.HOME }}/.tmux.conf"
     state: link
     force: yes  # need to force in case .tmux.conf already exists
+
+- name: Install tmuxinator
+  community.general.gem:
+    name: tmuxinator
+    version: 3.0.5
+    state: present
+
+- name: Ensure ~/.tmux/plugins exists
+  ansible.builtin.file:
+    path: ~/.tmux/plugins
+    state: directory
+    mode: '0755'
+
+- name: Install TPM (tmux package manager)
+  ansible.builtin.git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: ~/.tmux/plugins/tpm
+    single_branch: yes

@@ -2,7 +2,7 @@
 
 - name: Install tmux deps for MacOS
   community.general.homebrew:
-    name: 
+    name:
       - tmux
+      - gem
     state: present
-
