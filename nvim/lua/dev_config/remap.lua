@@ -65,7 +65,12 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
 	command = [[:! ncdump -h %]],
 })
 
-vim.keymap.set("n", "<leader>+", "5<C-w>+")
-vim.keymap.set("n", "<leader>-", "5<C-w>-")
-vim.keymap.set("n", "<leader>>", "5<C-w>>")
-vim.keymap.set("n", "<leader><", "5<C-w><")
+vim.keymap.set("n", "<C-Up>", ":resize -5<CR>")
+vim.keymap.set("n", "<C-Down>", ":resize +5<CR>")
+vim.keymap.set("n", "<C-Left>", ":vertical resize +5<CR>")
+vim.keymap.set("n", "<C-Right>", ":vertical resize -5<CR>")
+--  Add keymap to copy current buffer filename into buffer
+vim.keymap.set("n", "<leader>fn", ':let @+ = expand("%:t")<CR>')
+-- git convenience keymaps
+vim.keymap.set("n", "<leader>gg", "<cmd>Git<CR>")
+vim.keymap.set("n", "<leader>ga", "<cmd>Git commit --amend<CR>")

@@ -19,3 +19,4 @@
 [alias]
     wt-clone="!sh ~/bin/.local/scripts/git_clone_for_worktrees.sh"
     repair-bare="!sh ~/bin/.local/scripts/repair_worktree.sh"
+    wt-pull="!sh ~/bin/.local/scripts/branch_with_remote_worktree.sh"
