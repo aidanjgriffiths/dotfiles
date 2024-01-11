@@ -18,7 +18,7 @@ require("mason-lspconfig").setup({
 	-- with the ones you want to install
 	-- see fixer.lua and lint.lua for fixers and linters
 	-- manually install "pylint"
-	ensure_installed = { "pyright", "tsserver" },
+	ensure_installed = { "pyright", "tsserver", "jdtls", "dockerls", "gopls" },
 
 	handlers = {
 		lsp_zero.default_setup,

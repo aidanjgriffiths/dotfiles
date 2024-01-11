@@ -77,4 +77,6 @@ return require("packer").startup(function(use)
 			require("oil").setup()
 		end,
 	})
+	-- use("mfussenegger/nvim-jdtls")
+	use("mfussenegger/nvim-dap")
 end)
