@@ -1,30 +1,42 @@
 ---
 
-- name: Check if Miniconda3 install exists
-  stat:
+- name: Ensure miniconda install dir exists
+  ansible.builtin.file:
     path: ~/miniconda3
-  register: result
+    state: present
+  when: not lookup("ansible.builtin.env", "CONDA_EXE")
 
+# maybe we could use asible_facts instead:
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html
+- name: Get operating system name
+  shell: uname
+  register: os
+  when: not lookup("ansible.builtin.env", "CONDA_EXE")
+
+- name: Get machine hardware name
+  shell: uname -m
+  register: hardware
+  when: not lookup("ansible.builtin.env", "CONDA_EXE")
+
+# just use /tmp instead?
 - name: Get Miniconda3 latest
   ansible.builtin.get_url:
-    url: https://repo.anaconda.com/miniconda/Miniconda3-latest-$(uname)-$(uname -m).sh
-    dest: ~/miniconda3/miniconda.sh
-  when: not result.stat.exists and ansible_distribution != "MacOSX"
+    url: https://repo.anaconda.com/miniconda/Miniconda3-latest-{{ os.stdout }}-{{ hardware.stdout }}.sh
+    dest: /tmp/miniconda.sh
+  when: not lookup("ansible.builtin.env", "CONDA_EXE")  and ansible_distribution != "MacOSX"
 
 - name: Get Miniforge latest (MacOSX ARM version)
   ansible.builtin.get_url:
-    url: https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh
-    dest: ~/miniconda3/miniconda.sh
-  when: not result.stat.exists and ansible_distribution == "MacOSX"
+    url: "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-{{ os.stdout }}-{{ hardware.stdout }}.sh"
+    dest: /tmp/miniconda.sh
+  when: not lookup("ansible.builtin.env", "CONDA_EXE") and ansible_distribution == "MacOSX"
 
 - name: Install Miniconda3 latest
-  shell: "bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3"
-  when: not result.stat.exists
+  shell: "bash /tmp/miniconda.sh -b -u -p ~/miniconda3"
+  when: not lookup("ansible.builtin.env", "CONDA_EXE")
 
 - name: Delete install script
   ansible.builtin.file:
-    path: ~/miniconda3/miniconda.sh
+    path: /tmp/miniconda.sh
     state: absent
-  when: not result.stat.exists
-
-# zsh role handles the conda init step
+  when: not lookup("ansible.builtin.env", "CONDA_EXE")

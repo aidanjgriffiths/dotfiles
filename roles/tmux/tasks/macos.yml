@@ -4,5 +4,5 @@
   community.general.homebrew:
     name:
       - tmux
-      - gem
+      - ruby # dependency for gem in Tmux
     state: present
