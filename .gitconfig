@@ -1,9 +1,7 @@
-[includeIf "gitdir:~/github/"]
-    path = ~/github/.gitconfig
-[includeIf "gitdir:~/dotfiles.git/"]
-    path = ~/github/.gitconfig
-[includeIf "gitdir:~/dev/"]
-    path = ~/dev/.gitconfig
+[user]
+        name = Aidan Griffiths
+        email = aidanjames.g@gmail.com
+        username = aidanjgriffiths
 [core]
         editor = nvim
 [sequence]
@@ -17,5 +15,6 @@
         ui = auto
 
 [alias]
-    wt-clone="!sh ~/bin/.local/scripts/git_clone_for_worktrees.sh"
-    repair-bare="!sh ~/bin/.local/scripts/repair_worktree.sh"
+    wt-clone="!sh ~/.local/bin//git_clone_for_worktrees.sh"
+    repair-bare="!sh ~/.local/bin//repair_worktree.sh"
+    wt-branch="!sh ~/.local/bin//branch_with_remote_worktree.sh"

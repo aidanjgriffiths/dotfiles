@@ -2,7 +2,14 @@
 
 - name: Install zsh deps for MacOS
   community.general.homebrew:
-    name: 
+    name:
       - zsh
       - stow
     state: present
+
+- name: Update dock times.
+  ansible.builtin.shell: |
+    defaults write com.apple.dock autohide-delay -int 0
+    defaults write com.apple.dock autohide-time-modifier -float 0.4
+    killall Dock
+    exit 0
