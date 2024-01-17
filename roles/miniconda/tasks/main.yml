@@ -3,7 +3,7 @@
 - name: Ensure miniconda install dir exists
   ansible.builtin.file:
     path: ~/miniconda3
-    state: present
+    state: directory
   when: not lookup("ansible.builtin.env", "CONDA_EXE")
 
 # maybe we could use asible_facts instead:
@@ -40,3 +40,7 @@
     path: /tmp/miniconda.sh
     state: absent
   when: not lookup("ansible.builtin.env", "CONDA_EXE")
+
+- name: Activate conda (important for zsh steps)
+  ansible.builtin.shell:
+    cmd: "source ~/miniconda3/bin/activate"

@@ -7,6 +7,7 @@ ZSH_THEME="robbyrussell"
 
 plugins=(
   git
+  ssh-agent
   bundler
   dotenv
   macos
@@ -15,6 +16,8 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
+
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
 
 export ANSIBLE_HOST_KEY_CHECKING=false
 export ANSIBLE_NOCOWS=true
