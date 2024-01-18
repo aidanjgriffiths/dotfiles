@@ -37,4 +37,5 @@ require("oil").setup({
 		["g."] = "actions.toggle_hidden",
 		["g\\"] = "actions.toggle_trash",
 	},
+	use_default_keymaps = false,
 })
