@@ -77,4 +77,5 @@ return require("packer").startup(function(use)
 			require("oil").setup()
 		end,
 	})
+	use("github/copilot.vim")
 end)
