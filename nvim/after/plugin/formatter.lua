@@ -28,6 +28,8 @@ require("formatter").setup({
 				return {
 					exe = "stylua",
 					args = {
+						"--indent-width 4",
+						"--indent-type Spaces",
 						"--search-parent-directories",
 						"--stdin-filepath",
 						util.escape_path(util.get_current_buffer_file_path()),
