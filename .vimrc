@@ -1,6 +1,5 @@
 call plug#begin('~/vim_plugins/vim-plug')
 " Plugins
-" Plug '~/vim_plugins/black', {'for': 'python'}
 Plug '~/vim_plugins/vim-surround'
 Plug '~/vim_plugins/ale', {'for': 'python'}
 
@@ -43,13 +42,11 @@ set noswapfile
 " set row and column on status bar
 set ruler
 " current colorsheme
-colorscheme seoul256
 
 let g:NetrwIsOpen=0
 
 " highlight whitespace in dark green
 highlight ExtraWhitespace ctermbg=22
-" ColorColoum set in seoul256
 "highlight ColorColumn ctermbg=lightblue
 
 match ExtraWhitespace /\s\+$/
