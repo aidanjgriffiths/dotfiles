@@ -40,6 +40,7 @@ require("formatter").setup({
                 }
             end,
         },
+        go = { require("formatter.filetypes.go").gofmt },
         python = {
             require("formatter.filetypes.python").black,
             require("formatter.filetypes.python").isort,

@@ -5,7 +5,7 @@ require("lint").linters_by_ft = {
     lua = { "luacheck" },
     go = { "glint" },
     terraform = { "tflint" },
-    yaml = { "ansible-lint" },
+    yaml = { "ansible_lint" },
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {

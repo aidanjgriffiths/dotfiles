@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
     command = [[:! ncdump -h %]],
 })
 
-vim.keymap.set("n", "<leader>+", "5<C-w>+")
+vim.keymap.set("n", "<leader>=", "5<C-w>+")
 vim.keymap.set("n", "<leader>-", "5<C-w>-")
-vim.keymap.set("n", "<leader>>", "5<C-w>>")
-vim.keymap.set("n", "<leader><", "5<C-w><")
+vim.keymap.set("n", "<leader>.", "5<C-w>>")
+vim.keymap.set("n", "<leader>,", "5<C-w><")

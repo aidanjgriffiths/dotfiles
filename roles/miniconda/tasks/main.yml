@@ -6,7 +6,7 @@
     state: directory
   when: not lookup("ansible.builtin.env", "CONDA_EXE")
 
-# maybe we could use asible_facts instead:
+# maybe we could use ansible_facts instead:
 # https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html
 - name: Get operating system name
   shell: uname
@@ -42,5 +42,4 @@
   when: not lookup("ansible.builtin.env", "CONDA_EXE")
 
 - name: Activate conda (important for zsh steps)
-  ansible.builtin.shell:
-    cmd: "source ~/miniconda3/bin/activate"
+  shell: "source ~/miniconda3/bin/activate"
