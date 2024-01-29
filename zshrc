@@ -17,6 +17,9 @@ plugins=(
   zsh-syntax-highlighting
 )
 
+path+=("~/.local/bin")
+path+=("~/.local/share/nvim/mason/bin")
+
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
 
 export ANSIBLE_HOST_KEY_CHECKING=false

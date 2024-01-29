@@ -44,7 +44,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- execute current file
 vim.keymap.set("n", "<leader><leader>", function()
-	vim.cmd("so")
+    vim.cmd("so")
 end)
 
 vim.keymap.set("n", "vv", "<C-w>v", { silent = true })
@@ -61,8 +61,8 @@ vim.keymap.set("n", "<F1>", [[:%s/\s\+$//e<cr>]])
 vim.keymap.set({ "n", "v" }, "<leader>z", "za")
 
 vim.api.nvim_create_autocmd({ "BufRead" }, {
-	pattern = { "*.nc" },
-	command = [[:! ncdump -h %]],
+    pattern = { "*.nc" },
+    command = [[:! ncdump -h %]],
 })
 
 vim.keymap.set("n", "<leader>+", "5<C-w>+")
